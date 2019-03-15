@@ -1,0 +1,17 @@
+// bootstrap
+$primary: #5e9a8e;
+$gray: #ececec;
+$gray-light: #f7faf9;
+$dark: #413d3d;
+
+$body-color: $dark;
+$link-color: $primary;
+
+$jumbotron-bg: transparent;
+$font-family-cursive: 'Great Vibes', cursive;
+$font-family-base: 'Dosis', sans-serif;
+$navbar-padding-y: 0.75rem;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
