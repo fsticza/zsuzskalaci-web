@@ -1,6 +1,6 @@
 <template>
   <select :id="name" v-if="type === 'select'" class="form-control" @change="onInput">
-    <option :value="0">{{placeholder}}</option>
+    <option value="">{{placeholder}}</option>
     <option v-for="({ label, value }) in options" :key="value" :value="value">
       {{label}}
     </option>
@@ -31,7 +31,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.options)
   },
   methods: {
     onInput (ev) {

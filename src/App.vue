@@ -9,31 +9,29 @@
           </div>
           <section class="hero__footer text-center mt-auto">
             <a target="_blank" class="save-the-date text-white" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=N2c2MWo5Mjc4YjA2b3ZjZDhocGdmbnAwaHIgZmVyZW5jLnN0aWN6YUBt&amp;tmsrc=ferenc.sticza%40gmail.com">
-              <h1 class="save-the-date__title">Jegyezd fel!</h1>
-              <h2><time datetime="2019-06-14T18:00:00.000Z">2019. június 14.</time></h2>
+              <h1 class="save-the-date__title">Save the Date</h1>
+              <h2 class="save-the-date__subtitle"><time datetime="2019-06-14T18:00:00.000Z">2019. június 14.</time></h2>
             </a>
           </section>
         </div>
       </div>
-
-      <nav class="main-navbar navbar sticky-top navbar-expand-lg">
-        <div class="container">
-          <button class="navbar-toggler" type="button">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main-nav">
-            <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link" href="#when">Mikor</a>
-                <a class="nav-item nav-link" href="#where">Helyszín</a>
-                <a class="nav-item nav-link" href="#about-us">Történetünk</a>
-                <a class="nav-item nav-link" href="#contact">Elérhetőségek</a>
-                <a class="nav-item nav-link" href="#rsvp">RSVP</a>
-            </div>
-        </div>
-        </div>
-      </nav>
-
     </div>
+
+    <nav class="main-navbar navbar sticky-top navbar-light navbar-expand-lg">
+      <div class="container">
+        <button @click="toggleNavigation" class="navbar-toggler ml-auto collapsed" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-nav">
+          <div class="navbar-nav mx-auto">
+            <a class="nav-item nav-link" v-for="({id, label}, idx) in sections"
+              :key="id"
+              :class="{'active': activeSectionIndex === idx}"
+              :href="`#${id}`">{{label}}</a>
+          </div>
+      </div>
+      </div>
+    </nav>
 
     <section class="section section--first">
       <h1 class="sr-only">Zsuzska &amp; Laci</h1>
@@ -42,7 +40,7 @@
           <article class="row align-items-center">
             <div class="col-sm-6 text-center">
               <div class="p-4">
-                <img src="./assets/images/zsuzska.jpg" height="400" alt="">
+                <img class="img-resp" src="./assets/images/zsuzska.jpg" alt="">
               </div>
             </div>
             <div class="col-sm-6">
@@ -54,6 +52,11 @@
             </div>
           </article>
           <article class="row align-items-center">
+            <div class="col-sm-6 order-sm-2 text-center">
+              <div class="p-4">
+                <img class="img-resp" src="./assets/images/laci.jpg" alt="">
+              </div>
+            </div>
             <div class="col-sm-6 text-sm-right">
               <div class="p-4">
                 <h1 class="section__block-title">A Vőlegény</h1>
@@ -61,17 +64,12 @@
                 <h2 class="h4 cursive">- Laci</h2>
               </div>
             </div>
-            <div class="col-sm-6 text-center">
-              <div class="p-4">
-                <img src="./assets/images/laci.jpg" height="400" alt="">
-              </div>
-            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--counter">
+    <section id="when" class="section section--counter">
       <div class="container">
         <h1 class="sr-only">Mikor</h1>
         <div class="row align-item-center">
@@ -117,11 +115,9 @@
       </div>
     </section>
 
-    <section class="section bg-light">
+    <section id="where" class="section bg-light">
       <div class="container">
-        <div class="text-center">
-          <h1 class="section__title">Helyszín</h1>
-        </div>
+        <section-title>Helyszín</section-title>
         <div class="bg-white">
 
           <article class="row align-items-center">
@@ -136,7 +132,7 @@
             </div>
             <div class="col-sm-6">
               <div class="p-4">
-                <h1 class="section__block-title">Egyházi ceremónia</h1>
+                <h1 class="section__block-title text-primary">Egyházi ceremónia</h1>
                 <h2 class="h5">Evangélikus templom, 2100 Gödöllő, Petőfi tér</h2>
               </div>
             </div>
@@ -153,7 +149,7 @@
             </div>
             <div class="col-sm-6 text-sm-right">
               <div class="p-4">
-                <h1 class="section__block-title">Vacsora &amp; Party</h1>
+                <h1 class="section__block-title text-primary">Vacsora &amp; Party</h1>
                 <h2 class="h5">Diófa Étterem és Rendezvényház, 1171 Budapest, Szabadság sgrt. 1.</h2>
               </div>
             </div>
@@ -162,11 +158,9 @@
       </div>
     </section>
 
-    <section class="section bg-gray">
+    <section id="about" class="section bg-gray">
       <div class="container">
-        <div class="text-center">
-          <h1 class="section__title">Történetünk</h1>
-        </div>
+        <section-title>Történetünk</section-title>
 
         <div class="bg-light">
           <article class="row align-items-center">
@@ -179,7 +173,7 @@
             </div>
             <div class="col-sm-6 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-1.jpg" height="400" alt="">
+                <img src="./assets/images/01_itsamatch.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -194,7 +188,7 @@
             </div>
             <div class="col-sm-6 order-sm-1 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-2.jpg" height="400" alt="">
+                <img src="./assets/images/02_elsorandi.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -209,7 +203,7 @@
             </div>
             <div class="col-sm-6 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-3.jpg" height="400" alt="">
+                <img src="./assets/images/03_nyaralas.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -224,7 +218,7 @@
             </div>
             <div class="col-sm-6 order-sm-1 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-4.jpg" height="400" alt="">
+                <img src="./assets/images/04_osszekoltozes.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -239,7 +233,7 @@
             </div>
             <div class="col-sm-6 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-5.jpg" height="400" alt="">
+                <img src="./assets/images/05_eljegyzes.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -254,7 +248,7 @@
             </div>
             <div class="col-sm-6 order-sm-1 text-center">
               <div class="p-4">
-                <img src="./assets/images/laci-zsuzska-6.jpg" height="400" alt="">
+                <img src="./assets/images/06_esmost.jpg" class="img-resp" alt="">
               </div>
             </div>
           </article>
@@ -262,11 +256,9 @@
       </div>
     </section>
 
-    <section class="section bg-primary">
+    <section id="contact" class="section bg-primary">
       <div class="container">
-        <div class="text-center">
-          <h1 class="section__title section__title--light">Elérhetőségek</h1>
-        </div>
+        <section-title title-class="section__title--light">Elérhetőségek</section-title>
         <div class="row text-center">
           <article class="col-sm-6">
             <h1 class="section__block-title mt-3">Menyasszony - Zsuzska</h1>
@@ -294,11 +286,9 @@
       </div>
     </section>
 
-    <section class="section">
+    <section id="rsvp" class="section">
       <div class="container">
-        <div class="text-center">
-          <h1 class="section__title">Tarts velünk!</h1>
-        </div>
+        <section-title>Tarts velünk!</section-title>
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
             <h2 class="section__block-title">Küldd el a visszajelzésed mielőbb!</h2>
@@ -311,8 +301,8 @@
 </template>
 
 <script>
-// import Alert from '@/components/Alert'
 import RsvpForm from '@/components/RsvpForm'
+import SectionTitle from '@/components/Title'
 
 const theDate = new Date('2019-06-14T18:00:00.000Z')
 const timeDiff = theDate.getTime() - Date.now()
@@ -322,13 +312,48 @@ export default {
     return {
       interval: null,
       notifications: [],
-      diff: Math.trunc(timeDiff / 1000)
+      diff: Math.trunc(timeDiff / 1000),
+      navbarClass: '',
+      activeSectionIndex: -1,
+      sections: [
+        { id: 'when', label: 'Mikor' },
+        { id: 'where', label: 'Helyszín' },
+        { id: 'about', label: 'Történetünk' },
+        { id: 'contact', label: 'Elérhetőségek' },
+        { id: 'rsvp', label: 'Visszajelzés' }
+      ]
     }
   },
-  created () {
+  mounted () {
     this.interval = setInterval(() => {
       this.diff -= 1
     }, 1000)
+
+    const navigationCallback = entries => {
+      // entries.forEach(entry => {
+      //   console.log(entry.target.id, entry.intersectionRatio * (entry.rootBounds.height / entry.boundingClientRect.height))
+      //   const sectionIndex = this.sections.findIndex(({ id }) => entry.target.id === id)
+      //   if (entry.intersectionRatio > 0.3) {
+      //     this.activeSectionIndex = sectionIndex
+      //   }
+      // })
+    }
+    const navigationObserver = new IntersectionObserver(navigationCallback, {
+      root: null,
+      rootMargin: '0px',
+      threshold: Array(100 + 1)
+        .fill(0)
+        .map((_, index) => index / 100 || 0)
+    })
+    this.sections.forEach(section => {
+      navigationObserver.observe(document.getElementById(section.id))
+    })
+  },
+  methods: {
+    toggleNavigation () {
+      document.getElementById('main-nav')
+        .classList.toggle('collapse')
+    }
   },
   computed: {
     seconds () {
@@ -356,16 +381,28 @@ export default {
     clearInterval(this.interval)
   },
   components: {
-    // Alert,
-    RsvpForm
+    RsvpForm,
+    SectionTitle
   }
 }
 </script>
 
 <style lang="scss">
   @import './assets/styles/app';
+  $navbar-height: 4rem;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .img-resp {
+    max-height: 400px;
+    max-width: 100%;
+  }
+
   .main-navbar {
     background: #fff;
+    margin-top: -$navbar-height;
     border-bottom: 1px solid $gray;
 
     .nav-link {
@@ -377,6 +414,16 @@ export default {
       &:hover {
         color: $primary;
       }
+      &.active {
+        color: $primary;
+      }
+    }
+
+    .navbar-toggler {
+      background-color: $primary;
+    }
+    .navbar-toggler-icon {
+       background: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#fff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
     }
   }
 
@@ -389,26 +436,6 @@ export default {
     border-top: 1px solid $gray;
   }
 
-  .section__title {
-    display: inline-block;
-    background-color: transparentize($primary, 0.9);
-    color: #848383;
-    padding: 1rem 2rem 0.5rem;
-    margin-bottom: 3rem;
-    font-family: $font-family-cursive;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-    border-top: 2px solid transparentize($primary, 0.9);
-    border-bottom: 2px solid transparentize($primary, 0.9);
-  }
-
-  .section__title--light {
-    background-color: transparentize(#fff, 0.9);
-    color: #fff;
-    border-top: 2px solid transparentize(#fff, 0.9);
-    border-bottom: 2px solid transparentize(#fff, 0.9);
-  }
-
   .section__block-title {
     font-size: 1.375rem;
     font-weight: 600;
@@ -418,7 +445,7 @@ export default {
   .section--hero {
     height: 100vh;
     overflow: hidden;
-    padding-bottom: 4.425rem;
+    padding-bottom: $navbar-height;
     background-image: url('./assets/images/header-photo.jpg');
     background-position: 50% 0;
     background-size: cover;
@@ -443,16 +470,25 @@ export default {
   .hero__text {
     text-align: center;
     position: absolute;
-    bottom: 200px;
+    bottom: 150px;
+    @include media-breakpoint-up(sm) {
+      bottom: 200px;
+    }
   }
   .hero__title {
     font-family: $font-family-cursive;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    font-size: 5rem;
+    font-size: 2.825rem;
+    @include media-breakpoint-up(sm) {
+      font-size: 5rem;
+    }
     margin-top: 3rem;
   }
   .hero__subtitle {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
+    @include media-breakpoint-up(sm) {
+      font-size: 2.25rem;
+    }
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -464,7 +500,10 @@ export default {
   }
 
   .hero__footer {
-    height: 140px;
+    height: 130px;
+    @include media-breakpoint-up(sm) {
+      height: 140px;
+    }
   }
 
   .text-general {
@@ -479,8 +518,13 @@ export default {
     @include border-radius(50%);
     transition: 1s 2.3s ease-in-out;
     display: block;
-    width: 280px;
-    height: 280px;
+
+    width: 220px;
+    height: 220px;
+    @include media-breakpoint-up(sm) {
+      width: 280px;
+      height: 280px;
+    }
     &:hover {
       text-decoration: none;
     }
@@ -519,6 +563,17 @@ export default {
   .save-the-date__title {
     font-family: $font-family-cursive;
     padding-top: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 0;
+    @include media-breakpoint-up(sm) {
+      font-size: 2.5rem;
+    }
+  }
+  .save-the-date__subtitle {
+    font-size: 1.75rem;
+    @include media-breakpoint-up(sm) {
+      font-size: 2.5rem;
+    }
   }
 
   .section--counter {
